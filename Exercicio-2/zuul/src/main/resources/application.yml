@@ -1,0 +1,29 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: Zuul
+
+#zuul:
+#  ignoredServices: '*'
+
+zuul:
+  routes:
+    moto:
+      path: /moto/**
+      serviceId: carro
+      stripPrefix: false
+    cep:
+      path: /cep/**
+      url: https://viacep.com.br/ws/
+    contatos:
+      path: /contatos/**
+      serviceId: contatos
+      stripPrefix: false
+      sensitiveHeaders: Cookie,Set-Cookie
+    contato:
+      path: /contato/**
+      serviceId: contatos
+      stripPrefix: false
+      sensitiveHeaders: Cookie,Set-Cookie
